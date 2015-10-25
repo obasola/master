@@ -58,9 +58,7 @@ public class EntrytypeServiceImpl implements EntrytypeService {
 
 	@Override
 	public Entrytype create(Entrytype entrytype) {
-		if(entrytypePersistence.load(entrytype.getId()) != null) {
-			throw new IllegalStateException("already.exists");
-		}
+
 		EntrytypeEntity entrytypeEntity = new EntrytypeEntity();
 		entrytypeServiceMapper.mapEntrytypeToEntrytypeEntity(entrytype, entrytypeEntity);
 		EntrytypeEntity entrytypeEntitySaved = entrytypePersistence.save(entrytypeEntity);

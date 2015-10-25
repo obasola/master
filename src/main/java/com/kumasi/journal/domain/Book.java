@@ -108,19 +108,9 @@ public class Book implements Serializable {
  
         public String toString() { 
         StringBuffer sb = new StringBuffer(); 
-        sb.append(id);
-        sb.append("|");
-        sb.append(isbn);
-        sb.append("|");
+
         sb.append(title);
-        sb.append("|");
-        sb.append(subtitle);
-        sb.append("|");
-        sb.append(abstractDescription);
-        sb.append("|");
-        sb.append(numberPages);
-        sb.append("|");
-        sb.append(author);
+        
         return sb.toString(); 
     } 
 

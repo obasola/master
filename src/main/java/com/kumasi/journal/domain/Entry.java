@@ -110,17 +110,9 @@ public class Entry implements Serializable {
  
         public String toString() { 
         StringBuffer sb = new StringBuffer(); 
-        sb.append(identry);
-        sb.append("|");
+
         sb.append(title);
-        // attribute 'storyDefinition' not usable (type = String Long Text)
-        // attribute 'successFactory' not usable (type = String Long Text)
-        sb.append("|");
-        sb.append(dateCreated);
-        sb.append("|");
-        sb.append(dateModified);
-        sb.append("|");
-        sb.append(entrytypeId);
+       
         return sb.toString(); 
     } 
 

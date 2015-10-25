@@ -58,9 +58,7 @@ public class PublisherServiceImpl implements PublisherService {
 
 	@Override
 	public Publisher create(Publisher publisher) {
-		if(publisherPersistence.load(publisher.getId()) != null) {
-			throw new IllegalStateException("already.exists");
-		}
+
 		PublisherEntity publisherEntity = new PublisherEntity();
 		publisherServiceMapper.mapPublisherToPublisherEntity(publisher, publisherEntity);
 		PublisherEntity publisherEntitySaved = publisherPersistence.save(publisherEntity);

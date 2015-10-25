@@ -58,9 +58,7 @@ public class BookPublisherServiceImpl implements BookPublisherService {
 
 	@Override
 	public BookPublisher create(BookPublisher bookPublisher) {
-		if(bookPublisherPersistence.load(bookPublisher.getPublisherId(), bookPublisher.getBookId()) != null) {
-			throw new IllegalStateException("already.exists");
-		}
+
 		BookPublisherEntity bookPublisherEntity = new BookPublisherEntity();
 		bookPublisherServiceMapper.mapBookPublisherToBookPublisherEntity(bookPublisher, bookPublisherEntity);
 		BookPublisherEntity bookPublisherEntitySaved = bookPublisherPersistence.save(bookPublisherEntity);

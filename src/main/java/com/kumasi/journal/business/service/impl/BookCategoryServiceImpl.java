@@ -58,9 +58,7 @@ public class BookCategoryServiceImpl implements BookCategoryService {
 
 	@Override
 	public BookCategory create(BookCategory bookCategory) {
-		if(bookCategoryPersistence.load(bookCategory.getBookId(), bookCategory.getCategoryId()) != null) {
-			throw new IllegalStateException("already.exists");
-		}
+
 		BookCategoryEntity bookCategoryEntity = new BookCategoryEntity();
 		bookCategoryServiceMapper.mapBookCategoryToBookCategoryEntity(bookCategory, bookCategoryEntity);
 		BookCategoryEntity bookCategoryEntitySaved = bookCategoryPersistence.save(bookCategoryEntity);

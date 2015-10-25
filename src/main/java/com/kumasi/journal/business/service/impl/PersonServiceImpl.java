@@ -57,9 +57,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public Person create(Person person) {
-		if(personPersistence.load(person.getIdperson()) != null) {
-			throw new IllegalStateException("already.exists");
-		}
+
 		PersonEntity personEntity = new PersonEntity();
 		personServiceMapper.mapPersonToPersonEntity(person, personEntity);
 		PersonEntity personEntitySaved = personPersistence.save(personEntity);

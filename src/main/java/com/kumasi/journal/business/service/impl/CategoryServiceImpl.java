@@ -58,9 +58,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Category create(Category category) {
-		if(categoryPersistence.load(category.getId()) != null) {
-			throw new IllegalStateException("already.exists");
-		}
+
 		CategoryEntity categoryEntity = new CategoryEntity();
 		categoryServiceMapper.mapCategoryToCategoryEntity(category, categoryEntity);
 		CategoryEntity categoryEntitySaved = categoryPersistence.save(categoryEntity);

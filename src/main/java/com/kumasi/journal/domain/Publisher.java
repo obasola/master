@@ -67,11 +67,9 @@ public class Publisher implements Serializable {
  
         public String toString() { 
         StringBuffer sb = new StringBuffer(); 
-        sb.append(id);
-        sb.append("|");
+
         sb.append(name);
-        sb.append("|");
-        sb.append(url);
+
         return sb.toString(); 
     } 
 

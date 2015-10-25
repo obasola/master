@@ -58,9 +58,7 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Book create(Book book) {
-		if(bookPersistence.load(book.getId()) != null) {
-			throw new IllegalStateException("already.exists");
-		}
+
 		BookEntity bookEntity = new BookEntity();
 		bookServiceMapper.mapBookToBookEntity(book, bookEntity);
 		BookEntity bookEntitySaved = bookPersistence.save(bookEntity);

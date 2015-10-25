@@ -90,15 +90,9 @@ public class Person implements Serializable {
  
         public String toString() { 
         StringBuffer sb = new StringBuffer(); 
-        sb.append(idperson);
-        sb.append("|");
+
         sb.append(emailAddress);
-        sb.append("|");
-        sb.append(password);
-        sb.append("|");
-        sb.append(firstName);
-        sb.append("|");
-        sb.append(lastName);
+
         return sb.toString(); 
     } 
 

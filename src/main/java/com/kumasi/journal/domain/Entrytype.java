@@ -57,8 +57,6 @@ public class Entrytype implements Serializable {
  
         public String toString() { 
         StringBuffer sb = new StringBuffer(); 
-        sb.append(id);
-        sb.append("|");
         sb.append(description);
         return sb.toString(); 
     } 

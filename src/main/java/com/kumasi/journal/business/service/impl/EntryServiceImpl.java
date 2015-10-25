@@ -58,9 +58,7 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	public Entry create(Entry entry) {
-		if(entryPersistence.load(entry.getIdentry()) != null) {
-			throw new IllegalStateException("already.exists");
-		}
+
 		EntryEntity entryEntity = new EntryEntity();
 		entryServiceMapper.mapEntryToEntryEntity(entry, entryEntity);
 		EntryEntity entryEntitySaved = entryPersistence.save(entryEntity);
