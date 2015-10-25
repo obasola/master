@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Telosys Database Repository --><root>
+<tableList databaseId="4" databaseName="MYSQL" databaseProductName="MySQL" generation="2015-10-24 23:19:52">
+<table catalog="Journal" databaseType="TABLE" javaBean="Book" name="Book" schema="">
+<column dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="isbn" dbNotNull="true" dbPosition="2" dbSize="20" dbTypeName="VARCHAR" inputType="text" javaName="isbn" javaType="java.lang.String" jdbcTypeCode="12" label="Isbn" maxLength="20" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="title" dbNotNull="true" dbPosition="3" dbSize="75" dbTypeName="VARCHAR" inputType="text" javaName="title" javaType="java.lang.String" jdbcTypeCode="12" label="Title" maxLength="75" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="subtitle" dbNotNull="false" dbPosition="4" dbSize="250" dbTypeName="VARCHAR" inputType="text" javaName="subtitle" javaType="java.lang.String" jdbcTypeCode="12" label="Subtitle" maxLength="250" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="abstract_description" dbNotNull="false" dbPosition="5" dbSize="255" dbTypeName="TINYTEXT" inputType="text" javaName="abstractDescription" javaType="java.lang.String" jdbcTypeCode="12" label="Abstract description" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="number_pages" dbNotNull="false" dbPosition="6" dbSize="10" dbTypeName="INT" inputType="number" javaName="numberPages" javaType="java.lang.Integer" jdbcTypeCode="4" label="Number pages" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="author" dbNotNull="false" dbPosition="7" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="author" javaType="java.lang.String" jdbcTypeCode="12" label="Author" maxLength="45" notNull="false" selected="true"/>
+<link cardinality="ManyToMany" cascade="" fetch="DEFAULT" foreignKeyName="" id="LINK_JT_Book_Publisher_O" inverseSideOf="" javaName="listOfPublisher" javaType="java.util.List" joinTableName="Book_Publisher" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="Book" targetEntity="Publisher" targetTableName="Publisher" used="true">
+<joinTable name="Book_Publisher">
+<joinColumns>
+<joinColumn insertable="false" name="Book_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+<inverseJoinColumns>
+<joinColumn insertable="false" name="Publisher_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</inverseJoinColumns>
+</joinTable>
+</link>
+<link cardinality="ManyToMany" cascade="" fetch="DEFAULT" foreignKeyName="" id="LINK_JT_Book_Category_O" inverseSideOf="" javaName="listOfCategory" javaType="java.util.List" joinTableName="Book_Category" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="Book" targetEntity="Category" targetTableName="Category" used="true">
+<joinTable name="Book_Category">
+<joinColumns>
+<joinColumn insertable="false" name="Book_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+<inverseJoinColumns>
+<joinColumn insertable="false" name="Category_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</inverseJoinColumns>
+</joinTable>
+</link>
+</table>
+<table catalog="Journal" databaseType="TABLE" javaBean="BookCategory" name="Book_Category" schema="">
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="Book_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="bookId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Book id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="Category_id" dbNotNull="true" dbPosition="2" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="categoryId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Category id" notNull="true" selected="true"/>
+<fk name="fk_Book_has_Category_Book1">
+<fkcol colname="Book_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="Book_Category" tableref="Book" updaterule="3"/>
+</fk>
+<fk name="fk_Book_has_Category_Category1">
+<fkcol colname="Category_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="Book_Category" tableref="Category" updaterule="3"/>
+</fk>
+</table>
+<table catalog="Journal" databaseType="TABLE" javaBean="BookPublisher" name="Book_Publisher" schema="">
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="Publisher_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="publisherId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Publisher id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="Book_id" dbNotNull="true" dbPosition="2" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="bookId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Book id" notNull="true" selected="true"/>
+<fk name="fk_Publisher_has_Book_Book1">
+<fkcol colname="Book_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="Book_Publisher" tableref="Book" updaterule="3"/>
+</fk>
+<fk name="fk_Publisher_has_Book_Publisher1">
+<fkcol colname="Publisher_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="Book_Publisher" tableref="Publisher" updaterule="3"/>
+</fk>
+</table>
+<table catalog="Journal" databaseType="TABLE" javaBean="Category" name="Category" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="150" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="150" notEmpty="true" notNull="true" selected="true"/>
+<link cardinality="ManyToMany" cascade="" fetch="DEFAULT" foreignKeyName="" id="LINK_JT_Book_Category_I" inverseSideOf="LINK_JT_Book_Category_O" javaName="listOfBook" javaType="java.util.List" joinTableName="Book_Category" mappedBy="listOfCategory" optional="UNDEFINED" owningSide="false" sourceTableName="Category" targetEntity="Book" targetTableName="Book" used="true"/>
+</table>
+<table catalog="Journal" databaseType="TABLE" javaBean="Entry" name="Entry" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="idEntry" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="identry" javaType="java.lang.Integer" jdbcTypeCode="4" label="Identry" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="title" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="title" javaType="java.lang.String" jdbcTypeCode="12" label="Title" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="story_definition" dbNotNull="true" dbPosition="3" dbSize="2147483647" dbTypeName="LONGTEXT" inputType="text" javaName="storyDefinition" javaType="java.lang.String" jdbcTypeCode="-1" label="Story definition" longText="true" maxLength="2147483647" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="success_factory" dbNotNull="true" dbPosition="4" dbSize="16777215" dbTypeName="MEDIUMTEXT" inputType="text" javaName="successFactory" javaType="java.lang.String" jdbcTypeCode="-1" label="Success factory" longText="true" maxLength="16777215" notEmpty="true" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="date_created" dbNotNull="false" dbPosition="5" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="dateCreated" javaType="java.util.Date" jdbcTypeCode="93" label="Date created" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="date_modified" dbNotNull="false" dbPosition="6" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="dateModified" javaType="java.util.Date" jdbcTypeCode="93" label="Date modified" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="EntryType_id" dbNotNull="true" dbPosition="7" dbSize="10" dbTypeName="INT" inputType="number" javaName="entrytypeId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Entrytype id" notNull="true" selected="true"/>
+<fk name="fk_Entry_EntryType">
+<fkcol colname="EntryType_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="Entry" tableref="EntryType" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_Entry_EntryType" id="LINK_FK_fk_Entry_EntryType_O" inverseSideOf="" javaName="entrytype" javaType="Entrytype" joinTableName="" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="Entry" targetEntity="Entrytype" targetTableName="EntryType" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="EntryType_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="Journal" databaseType="TABLE" javaBean="Entrytype" name="EntryType" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="true" dbPosition="2" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="12" label="Description" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_Entry_EntryType" id="LINK_FK_fk_Entry_EntryType_I" inverseSideOf="LINK_FK_fk_Entry_EntryType_O" javaName="listOfEntry" javaType="java.util.List" joinTableName="" mappedBy="entrytype" optional="UNDEFINED" owningSide="false" sourceTableName="EntryType" targetEntity="Entry" targetTableName="Entry" used="true"/>
+</table>
+<table catalog="Journal" databaseType="TABLE" javaBean="Person" name="Person" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="idPerson" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="idperson" javaType="java.lang.Integer" jdbcTypeCode="4" label="Idperson" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="email_address" dbNotNull="true" dbPosition="2" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="emailAddress" javaType="java.lang.String" jdbcTypeCode="12" label="Email address" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="password" dbNotNull="true" dbPosition="3" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="password" javaType="java.lang.String" jdbcTypeCode="12" label="Password" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="first_name" dbNotNull="true" dbPosition="4" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="firstName" javaType="java.lang.String" jdbcTypeCode="12" label="First name" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="last_name" dbNotNull="true" dbPosition="5" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="lastName" javaType="java.lang.String" jdbcTypeCode="12" label="Last name" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+</table>
+<table catalog="Journal" databaseType="TABLE" javaBean="Publisher" name="Publisher" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="url" dbNotNull="false" dbPosition="3" dbSize="75" dbTypeName="VARCHAR" inputType="text" javaName="url" javaType="java.lang.String" jdbcTypeCode="12" label="Url" maxLength="75" notNull="false" selected="true"/>
+<link cardinality="ManyToMany" cascade="" fetch="DEFAULT" foreignKeyName="" id="LINK_JT_Book_Publisher_I" inverseSideOf="LINK_JT_Book_Publisher_O" javaName="listOfBook" javaType="java.util.List" joinTableName="Book_Publisher" mappedBy="listOfPublisher" optional="UNDEFINED" owningSide="false" sourceTableName="Publisher" targetEntity="Book" targetTableName="Book" used="true"/>
+</table>
+</tableList>
+</root>

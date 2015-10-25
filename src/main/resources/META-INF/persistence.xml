@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    
+	<persistence-unit name="persistence-unit1" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.kumasi.journal.domain.jpa.BookCategoryEntity</class>
+		<class>com.kumasi.journal.domain.jpa.BookEntity</class>
+		<class>com.kumasi.journal.domain.jpa.BookPublisherEntity</class>
+		<class>com.kumasi.journal.domain.jpa.CategoryEntity</class>
+		<class>com.kumasi.journal.domain.jpa.EntryEntity</class>
+		<class>com.kumasi.journal.domain.jpa.EntrytypeEntity</class>
+		<class>com.kumasi.journal.domain.jpa.PersonEntity</class>
+		<class>com.kumasi.journal.domain.jpa.PublisherEntity</class>
+		<properties>
+			<!-- Database configuration -->
+			<property name="hibernate.connection.driver_class"  value="com.mysql.jdbc.Driver"/>
+			<property name="hibernate.connection.url"           value="jdbc:mysql://localhost:3306/Journal"/>
+			<property name="hibernate.connection.username"      value="rocketeer"/>
+			<property name="hibernate.connection.password"      value="madscientist"/>
+			<property name="hibernate.dialect"                  value="org.hibernate.dialect.MySQLDialect"/>
+			<!-- Hibernate configuration -->
+			<property name="hibernate.hbm2ddl.auto"       value="none"/>
+			<property name="hibernate.show_sql"           value="true"/>
+		</properties>
+	</persistence-unit>
+    
+</persistence>
